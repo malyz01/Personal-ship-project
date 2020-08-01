@@ -1,40 +1,40 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+class ClassicShips extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-class ClassicShips extends React.Component  {
-    constructor(props)  {
-        super(props)
-}
+  render() {
+    const { ship_name, img, img_title } = this.props
 
-render()    {
+    return (
+      <React.Fragment>
+        <h3>{ship_name}</h3>
 
-    const   {
-        ship_name,
-        img,
-        img_title
-    } = this.props   
+        <ul>
+          <li>
+            <Link
+              to={{
+                pathname: `/evolutionpart1/${ship_name}`,
+                state: this.props
+              }}
+            >
+              <img src={img} title={img_title} />
+            </Link>
+          </li>
+        </ul>
 
-    return  (
-        <React.Fragment>
-       
-                <h3>{ship_name}</h3>
-
-                <ul>     
-                    <li>       
-                    <Link to = {`/evolutionpart1/${ship_name}`}>
-                        <img src = {img} title = {img_title} />
-                    </Link> 
-                    </li>
-                </ul>       
-
-                <p>Find out more on {ship_name} , Click on image
-                <br/><br/>
-                    {ship_name} Ship Horn</p>    
-           
-        </React.Fragment> 
+        <p>
+          Find out more on {ship_name} , Click on image
+          <br />
+          <br />
+          {ship_name} Ship Horn
+        </p>
+      </React.Fragment>
     )
-}
+  }
 }
 
 export default ClassicShips
