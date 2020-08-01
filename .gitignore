@@ -2,3 +2,7 @@ node_modules
 static
 npm-debug.log
 bundle.*
+package-lock.json
+.vscode
+yarn.lock
+yarn-error.log
