@@ -6,35 +6,32 @@ class FindClassic extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      classicship: false
+      classicship: null
     }
     this.setUpClassic = this.setUpClassic.bind(this)
   }
 
   componentDidMount() {
-    const { state } = this.props.location
-    if (state) {
-      this.setState({ classicship: state })
+    const { location, match } = this.props
+    if (location.state) {
+      this.setState({ classicship: location.state })
     } else {
-      this.setUpClassic(state.ship_name)
-        .then(res => {
-          this.setState({ classicship: res })
-        })
+      this.setUpClassic(match.params.shipname)
     }
   }
 
   setUpClassic(shipName) {
     getClassic(shipName)
-      .then(res => {
+      .then(ship => {
         this.setState({
-          classicship: res
+          classicship: ship
         })
       })
   }
 
   render() {
-    if (!this.state.classicship) return <div>Loading...</div>
-    return <MakeClassic {...this.props.location.state} />
+    if (!this.state.classicship) return <div>Loading...</div> //Create your loading component
+    return <MakeClassic {...this.state.classicship} />
   }
 }
 

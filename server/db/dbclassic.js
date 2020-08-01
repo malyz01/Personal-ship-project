@@ -16,6 +16,7 @@ function getClassic(ship_name, testConn) {
     .where('ship_name', ship_name)
     //Line below picks out ship names in alphabetical order by id
     .orderBy('id')
+    .first()
 }
 
 module.exports = {
